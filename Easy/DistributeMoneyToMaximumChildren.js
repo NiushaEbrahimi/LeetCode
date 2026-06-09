@@ -17,7 +17,7 @@
 
 // i couldn't figure this out becasue i thought that i have
 // to give them 8s (with greedy) untill i couldn't
-// but that's wrong
+// but that's wrong, we should start giving 1s to every child 
 
 // ai solution:
 var distMoney = function(money, children) {
