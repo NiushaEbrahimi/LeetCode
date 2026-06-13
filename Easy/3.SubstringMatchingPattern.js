@@ -10,7 +10,7 @@
  * @return {boolean}
  */
 
-// try again
+// TODO: try again
 
 var hasMatch = function(s, p) {
     const [left, right] = p.split("*");

@@ -9,7 +9,7 @@
  * @return {boolean}
  */
 
-// try again
+// TODO: try again
 
 var canBeIncreasing = function(nums) {
     for(let index in nums){

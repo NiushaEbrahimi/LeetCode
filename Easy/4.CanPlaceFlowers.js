@@ -11,7 +11,7 @@
  * @return {boolean}
  */
 
-// try again
+// TODO: try again
 
 var canPlaceFlowers = function(flowerbed, n) {
     let starting = flowerbed.indexOf(1);
