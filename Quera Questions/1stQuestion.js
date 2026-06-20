@@ -49,7 +49,7 @@ function Dava(n,weights,target){
             people.push(shifted)
             aliSum-=shifted
         }
-        return people
+        return `${people.length}\n${people.join(' ')}`
     }
     if(target==="ali"){
         if(rominaSum < aliSum) return 0
@@ -59,9 +59,10 @@ function Dava(n,weights,target){
             people.push(shifted)
             rominaSum-=shifted
         }
-        return people
+        return `${people.length}\n${people.join(' ')}`
     }
 }
 
-console.log(Dava(5,[1,4,6,9,2],"romina"))
-console.log(Dava(4,[1,4,6,9],"romina"))
+// console.log(Dava(5,[1,4,6,9,2],"romina"))
+// console.log(Dava(4,[1,4,6,9],"romina"))
+console.log(Dava(4,[5,7,3,1,],"ali"))
