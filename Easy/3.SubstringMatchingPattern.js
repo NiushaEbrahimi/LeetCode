@@ -13,21 +13,19 @@
 // TODO: try again
 
 var hasMatch = function(s, p) {
-    const [left, right] = p.split("*");
-    console.log(left)
+    const [leftS, rightS] = [0,s.length-1];
+    const [leftP, rightP] = [0,p.length-1];
 
-    let start = s.indexOf(left);
-    console.log(`start ${start}`)
+    while (leftS < s.length && rightS >= 0) {
+        if(s[leftS]===p[leftP]) leftP++
+        if(s[rightS]===p[rightP]) rightP--
+        if(p[leftP]!=="*" && s[leftS]!==p[leftP]) leftP--
+        if(p[rightP]!=="*" && s[rightS]!==p[rightP]) rightP++
 
-    while (start !== -1) {
-        if (s.indexOf(right, start + left.length) !== -1) {
-            console.log(s.indexOf(right, start + left.length))
-            return true;
-        }
-
-        start = s.indexOf(left, start + 1);
+        leftS++
+        rightS--
     }
 
     return false;
 };
-console.log(hasMatch("leetcode","ee*e"))
+console.log(hasMatch("leleleetcode","ee*e"))
