@@ -11,27 +11,45 @@
  * @return {boolean}
  */
 
+
 // TODO: try again
+// this is the approach after watching a video
 
 var canPlaceFlowers = function(flowerbed, n) {
-    let starting = flowerbed.indexOf(1);
-    let count =0;
-    while(starting!==-1){
-        if(starting === flowerbed.length - 1 && flowerbed[starting-1]===0){
-            count+=2
+    const newFlowerbed = [0,...flowerbed,0]
+    for(let i=0;i<newFlowerbed.length;i++){
+        if(newFlowerbed[i]===0){
+            if(newFlowerbed[i-1]===0 && newFlowerbed[i+1]===0){
+                newFlowerbed[i]=1;
+                n--;
+            }
         }
-        if(starting === 0 && flowerbed[starting+1]===0){
-            count+=2
-        }
-        if(flowerbed[starting-1]===0 && flowerbed[starting+1]===0){
-            count+=3
-        }
-        starting = flowerbed.indexOf(1,starting+1)    
+        if(n<=0) return true
     }
-    if(n===Math.ceil((flowerbed.length - count)/2)){
-        return true
-    }else{
-        return false
-    }
+    return false
 };
-canPlaceFlowers([1,0,1,0,1,0,1],0)
+console.log(canPlaceFlowers([1,0,1,0,1,0,1],0))
+console.log(canPlaceFlowers([1,0,1,0,1,0,0],1))
+console.log(canPlaceFlowers([1,0,1,0,1,0,0,0,0],2))
+
+
+// best approach
+
+var canPlaceFlowers = function(flowerbed, n) {
+    let planted = 0;
+    for(let i=0;i<flowerbed.length;i++){
+        const leftEmpty = i===0 || flowerbed[i-1]===0;
+        const rightEmpty = i===flowerbed.length-1 || flowerbed[i+1]===0;
+
+        if(leftEmpty && rightEmpty && flowerbed[i]===0){
+            flowerbed[i]=1;
+            planted++;
+        }
+
+        if(planted>=n){
+            return true;
+        }
+    }
+
+    return planted>=n;
+};
