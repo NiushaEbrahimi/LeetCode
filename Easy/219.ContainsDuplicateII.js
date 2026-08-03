@@ -44,6 +44,8 @@ var containsNearbyDuplicate = function(nums, k) {
 
         set.add(nums[n]);
 
+        // this line is important because it automatically creates the 
+        // range of numbers needed for the set
         if (n >= k){
             set.delete(nums[n - k])
         }
